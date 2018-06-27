@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.shsxt</groupId>
+  <artifactId>five</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>five Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+    
+    <dependency>
+	  <groupId>com.shsxt</groupId>
+	  <artifactId>jstl</artifactId>
+	  <version>1.0</version>
+	</dependency>
+    
+    
+    <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>3.0-alpha-1</version>
+	    <scope>provided</scope>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.6</version>
+	</dependency>
+  </dependencies>
+  
+  
+  	 <!-- 仓库地址 -->
+  <repositories>
+    <repository>
+       <id>nexus</id>
+       <name>Team Nexus Repository</name>
+       <url>http://localhost:8081/nexus/content/groups/public</url> <!--指向私有仓库的公共组-->
+    </repository>
+  </repositories>
+  	
+	<!--  私服上传 -->
+	<distributionManagement>
+       <repository>
+           <id>releases</id>
+           <name>Nexus</name>
+           <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+       </repository>
+       <snapshotRepository>
+           <id>snapshots</id>
+           <name>Nexus </name>
+           <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+       </snapshotRepository>
+    </distributionManagement>
+			
+			
+  <build>
+    <finalName>five</finalName>
+    
+        <plugins>
+    	<!-- Tomcat7插件 -->
+    	<plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+        
+        <!-- jetty配置 -->
+        <plugin>
+		  <groupId>org.eclipse.jetty</groupId>
+		  <artifactId>jetty-maven-plugin</artifactId>
+		  <version>9.4.11.v20180605</version>
+		</plugin>
+        
+    </plugins>
+  </build>
+</project>
